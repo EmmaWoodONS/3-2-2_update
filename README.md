@@ -5,20 +5,20 @@ Purpose: To create csv data for birthweight: mother age disaggregations for indi
 Requirements: 
 
 1) Save mother age by birthweight data as a csv in Jemalex/code for updates/3.2.2/Input. This is in table 10 (Live births, stillbirths and linked infant deaths: birthweight by age of mother, numbers and rates) of source 1 data
-2) In that csv make one header row with the headings:
-  	Birthweight	
-  	Mother_age	
-  	Live births	
-  	Stillbirths		
-  	Early_neonatal	
-	Neonatal
-	Post-neonatal	
-	Infant
-	Rates_Stillbirths	
-	Rates_Perinatal	
-	Rates_Neonatal	
-	Rates_Post-neonatal	
-	Rates_Infant
+2) In that csv make one header row with the headings:  
+  	Birthweight  
+  	Mother_age  
+  	Live births  
+  	Stillbirths  
+  	Early_neonatal  
+	Neonatal  
+	Post-neonatal  
+	Infant  
+	Rates_Stillbirths  
+	Rates_Perinatal  
+	Rates_Neonatal  
+	Rates_Post-neonatal  
+	Rates_Infant  
 
 TROUBLESHOOTING:
 
