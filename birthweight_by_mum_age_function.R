@@ -4,35 +4,36 @@
 # Requirements: This script is called by birthweight_by_mum_age_to_csv.R
 
 
-
+source("functions.R")
 
 get_birthweight_by_mother_age_for_csv <- function() { 
  
-  '%not_in%' <- Negate('%in%')
-  
-  setwd(filepath)
-  
+  setwd(working_directory)
+    
   is_table_name_correct <- menu(c("Yes", "No"), 
-                                title = paste("Are data for birthweight by mother age in", birthweight_by_mum_age_table_name, "(please type relevant number and hit enter)"))
+                                title = paste("Are data for birthweight by mother age in", birthweight_by_mum_age_tab_name, "(please type relevant number and hit enter)"))
   
   if(is_table_name_correct == 2) {
-    print("Please enter correct Table name between the quote marks after 'birthweight_by_mum_age_table_name <- ', then re-run the script")
+    print("Please enter correct Table name between the quote marks after 'birthweight_by_mum_age_tab_name <- ', then re-run the script")
   } else {
     
-    source_data <- xlsx_cells(filename, sheets = birthweight_by_mum_age_table_name)
+    print(paste("reading in", filename, "from", getwd()))
+    
+    source_data <- xlsx_cells(filename, sheets = birthweight_by_mum_age_tab_name)
     
     possible_geographies <- c("England", "Wales", "Scotland", "Northern Ireland", "UK", "United Kingdom")
-    
+
+    print("getting country and year")
     info_cells <- source_data %>%
-      filter(row %in% 1:(first_column_header_row - 1)) %>% 
-      distinct(character) %>% 
-      filter(!is.na(character)) %>% 
-      mutate(character = trimws(character,  which = "both")) %>% 
-      mutate(Year = ifelse(substr(character, nchar(character) - 3, nchar(character) - 2) == "20", 
-                           substr(character, nchar(character) - 3, nchar(character)), 
-                           NA)) %>% 
+      filter(row %in% 1:(first_header_row_birthweight_by_mum_age - 1)) %>%
+      distinct(character) %>%
+      filter(!is.na(character)) %>%
+      mutate(character = trimws(character,  which = "both")) %>%
+      mutate(Year = ifelse(substr(character, nchar(character) - 3, nchar(character) - 2) == "20",
+                           substr(character, nchar(character) - 3, nchar(character)),
+                           NA)) %>%
       mutate(Country = ifelse(grepl(possible_geographies, character, fixed = TRUE), character, NA))
-    
+
     Years <- filter(info_cells, !is.na(Year)) %>% 
       select(Year)
     Years_list <- as.list(unique(Years))
@@ -50,7 +51,8 @@ get_birthweight_by_mother_age_for_csv <- function() {
       print("Error: code has identified more than one year, where only one was expected. Please check that Year is correct in the output")
     }
     Year <- Years_list[[1]]
-    
+   
+    print("tidying data") 
     superscript_regex_codes <- "[\u{2070}\u{00B9}\u{00B2}\u{00B3}\u{2074}-\u{2079}]"
     
     all_letters <-c(LETTERS, letters)
@@ -60,10 +62,10 @@ get_birthweight_by_mother_age_for_csv <- function() {
                                 gsub(superscript_regex_codes, '', character), 
                                 character)) %>% # because we dont want to keep superscripts
       mutate(character = ifelse(substr(character, 1, 1) %in% all_letters, 
-                                gsub("[0-9]", '', character), 
+                                gsub("[1-9]", '', character), 
                                 character)) %>%  # because sometimes superscripts seem to be read as just plain numbers
       mutate(is_blank = ifelse(character == "" & data_type == "character", TRUE, is_blank)) %>%
-      filter(is_blank == FALSE & row %not_in% 1:(first_column_header_row - 1)) %>%
+      filter(is_blank == FALSE & row %not_in% 1:(first_header_row_birthweight_by_mum_age - 1)) %>%
       behead("left-up", birthweight) %>%
       behead("left", mother_age) %>%
       behead("up-left", measure) %>%
@@ -82,6 +84,7 @@ get_birthweight_by_mother_age_for_csv <- function() {
     
     # should count dp and do to that number here
     
+    print("calculating late neonatal deaths")
     late_neonatal <- data_for_calculations %>% 
       mutate(Numbers_Late_neonatal_Deaths = Numbers_Neonatal_Deaths - Numbers_Early_Deaths) %>% 
       mutate(Rates_Late_neonatal_Deaths = ifelse(Numbers_Late_neonatal_Deaths > 3, 
@@ -148,13 +151,12 @@ get_birthweight_by_mother_age_for_csv <- function() {
         select(Year, Sex, Country, Region, `Health board`, Birthweight, Age, `Neonatal period`, `Unit measure`, `Unit multiplier`, `Observation status`, GeoCode, Value)
       
       
-      setwd('..')
       setwd('./Output')
       write.csv(clean_csv_data, paste0("birthweight_by_mother_age_for_csv_", Year, ".csv"), row.names = FALSE)
       
       current_directory <- getwd()
       print(paste0("Birthweight by mother age data have been created and formatted for ", Year, ", and saved in '", current_directory, 
-                   "' as 'birthweight_by_mother_age_for_csv_", year, ".csv'"))
+                   "' as 'birthweight_by_mother_age_for_csv_", Year, ".csv'"))
       
     }
   }

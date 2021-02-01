@@ -18,8 +18,8 @@ library(unpivotr)
 library(stringr)
 
 
-setwd("H:\\Coding_repos\\3-2-2_update\\") # you should not need to edit this
 
+working_directory <- "H:\\Coding_repos\\3-2-2_update\\" # you should not need to edit this
 filename <- "Input/cms2018workbookf.xlsx"
 
 birthweight_by_mum_age_tab_name <- "Table 10"
@@ -29,9 +29,9 @@ country_of_occurrence_by_sex_tab_name <- "Table 2"
 first_header_row_country_by_sex <- 4
 
 
-source(paste0(filepath,"basic_checks_and_setup.R"))
-source(paste0(filepath,"birthweight_by_mum_age_function.R"))
+# source(paste0(filepath,"basic_checks_and_setup.R"))
+source("birthweight_by_mum_age_function.R")
 
 
-run_basic_checks_and_setup()
+# run_basic_checks_and_setup()
 get_birthweight_by_mother_age_for_csv() 
