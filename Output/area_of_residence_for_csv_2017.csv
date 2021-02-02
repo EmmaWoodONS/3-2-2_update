@@ -1,0 +1,11 @@
+"Year","Sex","Country","Region","Health board","Birthweight","Age","Neonatal period","Unit measure","Unit multiplier","Observation status","GeoCode","Value"
+"2017","","England","North East","","","","","Rate per 1,000 live births","Units","Undefined","E12000001",2.2
+"2017","","England","North West","","","","","Rate per 1,000 live births","Units","Undefined","E12000002",3.2
+"2017","","England","Yorkshire and the Humber","","","","","Rate per 1,000 live births","Units","Undefined","E12000003",2.7
+"2017","","England","East Midlands","","","","","Rate per 1,000 live births","Units","Undefined","E12000004",2.7
+"2017","","England","West Midlands","","","","","Rate per 1,000 live births","Units","Undefined","E12000005",4.2
+"2017","","England","East","","","","","Rate per 1,000 live births","Units","Undefined","E12000006",2.4
+"2017","","England","London","","","","","Rate per 1,000 live births","Units","Undefined","E12000007",2.4
+"2017","","England","South East","","","","","Rate per 1,000 live births","Units","Undefined","E12000008",2.9
+"2017","","England","South West","","","","","Rate per 1,000 live births","Units","Undefined","E12000009",2.1
+"2017","","England","Wales","","","","","Rate per 1,000 live births","Units","Undefined","W92000004",2.5

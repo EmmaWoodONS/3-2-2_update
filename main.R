@@ -16,11 +16,12 @@ library(dplyr)
 library(tidyxl)
 library(unpivotr)
 library(stringr)
+library(stringi)
 
+#----------------------------------- CONFIGURATIONS -------------------------------------------
 
-
-working_directory <- "H:\\Coding_repos\\3-2-2_update\\" # you should not need to edit this
-filename <- "Input/cms2018workbookf.xlsx"
+working_directory <- "H:\\Coding_repos\\3-2-2_update\\" # the folder containing code for the update. This folder should contain folders called "Input" and "Output"
+filename <- "Input/cms2017correctedfeb2020.xlsx"
 
 birthweight_by_mum_age_tab_name <- "Table 10"
 first_header_row_birthweight_by_mum_age <- 4
@@ -28,10 +29,16 @@ first_header_row_birthweight_by_mum_age <- 4
 country_of_occurrence_by_sex_tab_name <- "Table 2"
 first_header_row_country_by_sex <- 4
 
+area_of_residence_tab_name <- "Table 3"
+first_header_area_of_residence <- 4
 
-# source(paste0(filepath,"basic_checks_and_setup.R"))
-source("birthweight_by_mum_age_function.R")
+#----------------------------------------------------------------------------------------------
+
+setwd(working_directory)
+source("birthweight_by_mum_age.R")
+source("country_of_occurence_by_sex.R")
+source("region.R")
 
 
-# run_basic_checks_and_setup()
-get_birthweight_by_mother_age_for_csv() 
+
+

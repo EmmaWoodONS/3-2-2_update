@@ -1,13 +1,13 @@
 "Year","Sex","Country","Region","Health board","Birthweight","Age","Neonatal period","Unit measure","Unit multiplier","Observation status","GeoCode","Value"
-"2018","","United Kingdom2,3","","","","","Early neonatal","Rate per 1,000 live births","Units","Undefined","K02000001",2.2
-"2018","","United Kingdom2,3","","","","","Late neonatal","Rate per 1,000 live births","Units","Undefined","K02000001",0.6
-"2018","","United Kingdom2,3","","","","","","Rate per 1,000 live births","Units","Undefined","K02000001",2.7
-"2018","Male","United Kingdom2,3","","","","","Early neonatal","Rate per 1,000 live births","Units","Undefined","K02000001",2.4
-"2018","Male","United Kingdom2,3","","","","","Late neonatal","Rate per 1,000 live births","Units","Undefined","K02000001",0.6
-"2018","Male","United Kingdom2,3","","","","","","Rate per 1,000 live births","Units","Undefined","K02000001",2.9
-"2018","Female","United Kingdom2,3","","","","","Early neonatal","Rate per 1,000 live births","Units","Undefined","K02000001",2
-"2018","Female","United Kingdom2,3","","","","","Late neonatal","Rate per 1,000 live births","Units","Undefined","K02000001",0.5
-"2018","Female","United Kingdom2,3","","","","","","Rate per 1,000 live births","Units","Undefined","K02000001",2.5
+"2018","","","","","","","Early neonatal","Rate per 1,000 live births","Units","Undefined","K02000001",2.2
+"2018","","","","","","","Late neonatal","Rate per 1,000 live births","Units","Undefined","K02000001",0.6
+"2018","","","","","","","","Rate per 1,000 live births","Units","Undefined","K02000001",2.7
+"2018","Male","","","","","","Early neonatal","Rate per 1,000 live births","Units","Undefined","K02000001",2.4
+"2018","Male","","","","","","Late neonatal","Rate per 1,000 live births","Units","Undefined","K02000001",0.6
+"2018","Male","","","","","","","Rate per 1,000 live births","Units","Undefined","K02000001",2.9
+"2018","Female","","","","","","Early neonatal","Rate per 1,000 live births","Units","Undefined","K02000001",2
+"2018","Female","","","","","","Late neonatal","Rate per 1,000 live births","Units","Undefined","K02000001",0.5
+"2018","Female","","","","","","","Rate per 1,000 live births","Units","Undefined","K02000001",2.5
 "2018","","England","","","","","Early neonatal","Rate per 1,000 live births","Units","Undefined","E92000001",2.2
 "2018","","England","","","","","Late neonatal","Rate per 1,000 live births","Units","Undefined","E92000001",0.6
 "2018","","England","","","","","","Rate per 1,000 live births","Units","Undefined","E92000001",2.8

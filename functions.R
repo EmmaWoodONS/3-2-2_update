@@ -1,3 +1,5 @@
+
+
 get_info_cells <- function(dat) {
   
   possible_geographies <- c("England", "Wales", "Scotland", "Northern Ireland", "UK", "United Kingdom")
@@ -48,7 +50,8 @@ get_country <- function(dat) {
 remove_superscripts_blanks_and_info_cells <- function(dat) {
   
   dat <- remove_superscripts(dat)
-  remove_blanks_and_info_cells(dat)
+  dat <- remove_blanks_and_info_cells(dat)
+  dat <- remove_double_superscripts(dat)
   
 }
 
@@ -73,6 +76,19 @@ remove_superscripts <- function(dat) {
                               character)) 
 }
 
+remove_double_superscripts <- function(dat) {
+  
+  all_letters <-c(LETTERS, letters)
+  all_double_superscripts <- c("1,2", "1,3", "1,4", "1,5",
+                               "2,3", "2,4", "2,5",
+                               "3,4", "3,5")
+    dat %>% 
+    mutate(character =  ifelse(get_fourth_from_last_character(character) %in% all_letters,
+             stri_replace_all_fixed(character, all_double_superscripts, '', vectorize_all=FALSE),
+             character)) 
+  
+}
+
 remove_blanks_and_info_cells <- function(dat) {
   
   dat %>% 
@@ -90,8 +106,23 @@ get_second_character <- function(variable) {
 get_penultimate_character <- function(variable) {
   substr(variable, nchar(variable) - 1, nchar(variable) - 1)
 }
-
+get_fourth_from_last_character <- function(variable) {
+  substr(variable, nchar(variable) - 3, nchar(variable) - 3)
+}
 #--------
+
+any_lowercase_letters <- function(variable) {grepl("[a-z]", variable)}
+
+find_faulty_GeoCodes <- function(dat) {
+  
+  dat %>% 
+    filter(nchar(GeoCode) != 9)
+  
+}
+
+format_region_names <- function(variable) {
+  ifelse(variable == "YORKSHIRE AND THE HUMBER", "Yorkshire and the Humber", str_to_title(variable))
+}
 
 
 `%not_in%` <- Negate(`%in%`)

@@ -8,6 +8,8 @@ Requirements:
 2) Check birthweight_by_mum_age_table_name is correct. If not edit it to be exactly the tab name for that table.
 2) Check that the first row of column headings is correct (first_column_header_row). If not, change it.
 
+Please check the data source to see if the best data are being reported, or if there are other series we sohould include
+
 TROUBLESHOOTING:
 If you get this error in red:
 Error in file(file, "rt") : cannot open the connection
@@ -17,4 +19,7 @@ In file(file, "rt") :
 You have specified a filename that does not exist. The file needs to be a csv and needs to be saved in the location specified by filepath. 
 filename must exactly match the name of the file, be in "", and have the .csv suffix included.
 
-If you get the error : Error in setwd("./Output") : cannot change working directory, check that there is a folder called Output (capitalisation matters)
+If you get an error similar to 
+Error in file(file, ifelse(append, "a", "w")) : 
+  cannot open the connection
+This is probably becaue you already have a previous version of that output file open. Close the file and try again.
